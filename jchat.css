@@ -6,69 +6,90 @@
 body {
     margin: 0;
     overflow: hidden;
-    height: calc(100vh - 2rem);
     position: relative;
-    padding: 1rem;
+    padding-left: 1rem;
     display: flex;
     justify-content: flex-end;
     align-content: center;
     align-items: flex-start; 
     flex-direction: column;
-    background-color: #000;
+    padding: ;
+    height: 100vh;
 }
 
 #chat_container {
+    animation: appear 3s cubic-bezier(.62,.01,.04,.99) 0s 1 normal forwards;
+    padding: 0;
     max-width: 18.25rem;
-    padding: 0rem;
     min-height: 0rem;
     border-radius: 2rem;
     position: relative;
-    box-shadow: 2px 0px 400px 177px rgba(27,3,120,0.54) inset;
-    -webkit-box-shadow: 2px 0px 400px 177px rgba(27,3,120,0.54) inset;
-    -moz-box-shadow: 2px 0px 400px 177px rgba(27,3,120,0.54) inset;
+    box-shadow: 0px 0px 5rem 10rem rgba(27,3,120,0.7) inset;
+    -webkit-box-shadow: 0px 0px 5rem 10rem rgba(27,3,120,0.7) inset;
+    -moz-box-shadow: 0px 0px 5rem 10rem rgba(27,3,120,0.7) inset;
     color: white;
     font-weight: 800;
     word-break: break-word;
-    max-height: calc(100% - 2rem);
-    transition: all cubic-bezier(0,.05,0,1.24) 1s !important;
+    max-height: calc(100% - 4rem);
+    transition: all cubic-bezier(0,.05,0,1.24) 2s !important;
     display: flex;
     justify-content: flex-end;
     align-content: center;
     align-items: flex-start; 
     flex-direction: column;
-    /*! flex-wrap: wrap; */
     overflow: hidden;
-    gap: .2rem;
     width: fit-content;
-    padding-top: 1rem; 
+    padding-top: .75rem; 
+    padding-bottom: 1rem; 
     font-family: 'Nunito', sans-serif;
+    margin-bottom: 1rem;
+}
+@keyframes appear {
+  0%{
+    opacity: 0;
+    }
+  100% {
+    opacity: 1;
+    }
 }
 body::before {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 900;
-    font-size: 100px;
-    color: white;
-    position: relative;
-}
-body::before {
-  content: ''; 
+  animation: planet 10s ease infinite, appear 1s cubic-bezier(.62,.01,.04,.99) 0s 1 normal forwards;
+  content: '';
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  color: #000;
   overflow: visible;
-  background-image: url('https://raw.githubusercontent.com/TheyFoundMe/StreamsMelos/main/teste2.png');
+  background-image: url('https://raw.githubusercontent.com/TheyFoundMe/StreamsMelos/main/lives%20meli2.png');
   background-repeat: no-repeat;
   background-size: contain;
-  position: relative; /*or absolute*/
+  position: relative; 
   z-index: 1000;
   min-height: 4rem;
   min-width: 16rem;
-  transform: translateY(1rem);
-  
+  transform: translateY(2rem);
+  transform-origin: 30% 50%;
+  transition: all ease 2s;
+    
+}
+@keyframes planet {
+  0%{
+    transform: translateY(1.5rem) rotate(0deg);
+    }
+    50%{
+    transform: translateY(-1rem) rotate(10deg);
+    }
+  100% {
+    transform: translateY(1.5rem) rotate(0deg);
+
+      
+    }
 }
 #chat_container::after {
 
-
 }
 .chat_line{
-    animation: delete 2s ease-in-out 200s 1 normal forwards;
+    animation: delete 2s cubic-bezier(.62,.01,.04,.99) 58s 1 normal forwards;
     max-height: 100rem;
     margin-right: 1rem;
     margin-left: 1rem;
@@ -82,24 +103,26 @@ body::before {
     max-width: 100rem;
     font-family: 'Nunito', sans-serif;
     background-color: #0d013b;
-    margin-bottom: .5rem;
-    border-radius: .5rem 1rem 1rem 1rem;
+    border-radius: 1rem;
+    margin-top: 0.25rem
 }
 .chat_line:first-of-type{
+    margin-top: .2rem;
+    transition: all ease 1s;
 }
 .chat_line:last-of-type{
-    margin-bottom: 1rem;
 }
-
-
 
 @keyframes delete {
   0%   {
+    overflow: hidden;
+    max-width: 100rem;
     max-height: 100rem;
     min-height: 1rem;
     position: relative;
     }
   98% {
+    max-width: 0rem;
     max-height: 0rem;
     min-height: 0px;
     opacity: 1;
@@ -112,11 +135,13 @@ body::before {
     position: relative;
     }
   100% {
+    overflow: hidden;
+    max-width: 0rem;
     max-height: 0rem;
-      
     min-height: 0px;
     position: fixed;
     opacity: 0;
+    top: 0;
         
     }
 }
@@ -127,14 +152,16 @@ body::before {
     display: flex;
     align-items: center;
     gap: .1rem;
-    border-radius: .5rem;
-    padding-left: .4rem;
+    border-radius: 1rem;
+    padding-left: .5rem;
     position: relative;
     /*! width: 1rem; */
     align-items: center;
     align-content: center;
     justify-content: center;
-    padding-right: .4rem;
+    padding-right: .5rem;
+    padding-top: .15rem;
+    font-size: .8rem;
 }
 .message{
 
